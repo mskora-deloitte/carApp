@@ -1,4 +1,4 @@
-package com.dolittle.carApp;
+package com.dolittle.carApp.carApp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

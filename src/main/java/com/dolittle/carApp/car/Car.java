@@ -1,9 +1,10 @@
-package com.dolittle.car;
+package com.dolittle.carApp.car;
 
-import com.dolittle.employee.Employee;
-import com.dolittle.rental.Rental;
+import com.dolittle.carApp.employee.Employee;
+import com.dolittle.carApp.rental.Rental;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,14 +21,16 @@ public class Car {
     private Integer power;
     private Integer mileage;
     @OneToMany
-    private Set<Rental> rentals;
+    private Set<Rental> rentals = new HashSet<>();
     @ManyToMany
-    private Set<Employee> maintainers;
+    private Set<Employee> maintainers = new HashSet<>();
 
-    public Car(Long id, String type, String brand, Integer productionYear, String color, Float engineCapacity,
-               Integer power, Integer mileage, Set<Employee> maintainers) {
-        super();
-        this.id = id;
+    public Car() {
+
+    }
+
+    public Car(String type, String brand, Integer productionYear, String color, Float engineCapacity,
+               Integer power, Integer mileage) {
         this.type = type;
         this.brand = brand;
         this.productionYear = productionYear;
@@ -35,7 +38,6 @@ public class Car {
         this.engineCapacity = engineCapacity;
         this.power = power;
         this.mileage = mileage;
-        this.maintainers = maintainers;
     }
 
     public Long getId() {

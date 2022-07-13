@@ -1,7 +1,7 @@
-package com.dolittle.outpost;
+package com.dolittle.carApp.outpost;
 
-import com.dolittle.employee.Employee;
-import com.dolittle.rental.Rental;
+import com.dolittle.carApp.employee.Employee;
+import com.dolittle.carApp.rental.Rental;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,9 +24,7 @@ public class Outpost {
     @OneToMany
     private List<Rental> returns = new ArrayList<>();
 
-    public Outpost(Long id, String phoneNumber, String address) {
-        super();
-        this.id = id;
+    public Outpost(String phoneNumber, String address) {
         this.phoneNumber = phoneNumber;
         this.address = address;
     }

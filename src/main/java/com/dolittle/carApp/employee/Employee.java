@@ -1,7 +1,7 @@
-package com.dolittle.employee;
+package com.dolittle.carApp.employee;
 
-import com.dolittle.car.Car;
-import com.dolittle.outpost.Outpost;
+import com.dolittle.carApp.car.Car;
+import com.dolittle.carApp.outpost.Outpost;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -16,6 +16,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private Position position;
     private String name;
     private String surname;
@@ -25,8 +26,7 @@ public class Employee {
     @ManyToMany
     private Set<Car> carsToMaintain;
 
-    public Employee(Long id, Position position, String name, String surname, Outpost outpost, Set<Car> carsToMaintain) {
-        this.id = id;
+    public Employee(Position position, String name, String surname, Outpost outpost, Set<Car> carsToMaintain) {
         this.position = position;
         this.name = name;
         this.surname = surname;

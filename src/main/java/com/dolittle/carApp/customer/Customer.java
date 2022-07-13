@@ -1,8 +1,9 @@
-package com.dolittle.customer;
+package com.dolittle.carApp.customer;
 
-import com.dolittle.rental.Rental;
+import com.dolittle.carApp.rental.Rental;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -12,7 +13,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String address;
-    private String birthDate;
+    private LocalDate birthDate;
     private String phoneNumber;
     private String creditCardNumber;
     private String name;
@@ -20,10 +21,8 @@ public class Customer {
     @OneToMany
     private Set<Rental> rentals;
 
-    public Customer(Long id, String address, String birthDate, String phoneNumber, String creditCardNumber,
+    public Customer(String address, LocalDate birthDate, String phoneNumber, String creditCardNumber,
                     String name, String surname) {
-        super();
-        this.id = id;
         this.address = address;
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
@@ -48,11 +47,11 @@ public class Customer {
         this.address = address;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

@@ -1,10 +1,12 @@
-package com.dolittle.rental;
+package com.dolittle.carApp.rental;
 
-import com.dolittle.car.Car;
-import com.dolittle.customer.Customer;
-import com.dolittle.outpost.Outpost;
+import com.dolittle.carApp.car.Car;
+import com.dolittle.carApp.outpost.Outpost;
+import com.dolittle.carApp.customer.Customer;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 public class Rental {
@@ -12,12 +14,8 @@ public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String rentalDate;
-//    private Long customerId;
-//    private Long carId;
-//    private Long rentOutpostId;
-//    private Long returnOutpostId;
-    private Long price;
+    private LocalDate rentalDate;
+    private BigDecimal price;
     @ManyToOne
     private Outpost rentOutpost;
     @ManyToOne
@@ -27,10 +25,8 @@ public class Rental {
     @ManyToOne
     private Customer customer;
 
-    public Rental(Long id, String rentalDate, Long price, Outpost rentOutpost, Outpost returnOutpost,
+    public Rental(LocalDate rentalDate, BigDecimal price, Outpost rentOutpost, Outpost returnOutpost,
                   Car car, Customer customer) {
-        super();
-        this.id = id;
         this.rentalDate = rentalDate;
         this.price = price;
         this.rentOutpost = rentOutpost;
@@ -47,19 +43,19 @@ public class Rental {
         this.id = id;
     }
 
-    public String getRentalDate() {
+    public LocalDate getRentalDate() {
         return rentalDate;
     }
 
-    public void setRentalDate(String rentalDate) {
+    public void setRentalDate(LocalDate rentalDate) {
         this.rentalDate = rentalDate;
     }
 
-    public Long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
