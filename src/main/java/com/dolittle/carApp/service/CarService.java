@@ -7,7 +7,9 @@ import com.dolittle.carApp.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CarService {
@@ -80,5 +82,17 @@ public class CarService {
             return true;
         }
         return false;
+    }
+
+    public List<Car> findCarsByTypeAndBrand(String type, String brand) {
+        return carRepository.findByTypeAndBrand(type, brand);
+    }
+
+    public Set<Car> findCarsByMaintainer(Long employeeId) {
+        if (employeeRepository.existsById(employeeId)) {
+            Employee employee = employeeRepository.getReferenceById(employeeId);
+            return employee.getCarsToMaintain();
+        }
+        return null;
     }
 }

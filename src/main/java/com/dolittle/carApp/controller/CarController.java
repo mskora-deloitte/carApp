@@ -5,6 +5,9 @@ import com.dolittle.carApp.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Set;
+
 @RestController
 public class CarController {
 
@@ -62,4 +65,13 @@ public class CarController {
                 "No such car or/and employee with given ID";
     }
 
+    @GetMapping("/findCarsByTypeAndBrand")
+    public List<Car> findCarsByTypeAndBrand(@RequestBody Car request) {
+        return carService.findCarsByTypeAndBrand(request.getType(), request.getBrand());
+    }
+
+    @GetMapping("/findCarsByMaintainer")
+    public Set<Car> findCarsByMaintainer(@RequestBody Long id) {
+        return carService.findCarsByMaintainer(id);
+    }
 }
