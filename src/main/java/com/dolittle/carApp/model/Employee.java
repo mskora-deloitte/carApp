@@ -1,13 +1,11 @@
-package com.dolittle.carApp.employee;
-
-import com.dolittle.carApp.car.Car;
-import com.dolittle.carApp.outpost.Outpost;
+package com.dolittle.carApp.model;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 public class Employee {
+
     enum Position {
         SALESMAN,
         MANAGER,
@@ -25,6 +23,9 @@ public class Employee {
     private Outpost outpost;
     @ManyToMany
     private Set<Car> carsToMaintain;
+
+    public Employee() {
+    }
 
     public Employee(Position position, String name, String surname, Outpost outpost, Set<Car> carsToMaintain) {
         this.position = position;

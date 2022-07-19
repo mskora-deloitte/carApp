@@ -1,7 +1,4 @@
-package com.dolittle.carApp.outpost;
-
-import com.dolittle.carApp.employee.Employee;
-import com.dolittle.carApp.rental.Rental;
+package com.dolittle.carApp.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,6 +20,9 @@ public class Outpost {
     private List<Rental> rentals = new ArrayList<>();
     @OneToMany
     private List<Rental> returns = new ArrayList<>();
+
+    public Outpost() {
+    }
 
     public Outpost(String phoneNumber, String address) {
         this.phoneNumber = phoneNumber;

@@ -1,18 +1,16 @@
-package com.dolittle.carApp;
+package com.dolittle.carApp.controller;
 
-import com.dolittle.carApp.car.Car;
-import com.dolittle.carApp.repository.*;
+import com.dolittle.carApp.model.Car;
+import com.dolittle.carApp.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-public class InitializationController {
+public class DatabaseController {
 
     @Autowired
     private CarRepository carRepository;
@@ -28,6 +26,11 @@ public class InitializationController {
 
     @GetMapping("/initialize")
     public void initializeDatabase() {
+        carRepository.deleteAll();
+        customerRepository.deleteAll();
+        employeeRepository.deleteAll();
+        outpostRepository.deleteAll();
+        rentalRepository.deleteAll();
         carRepository.save(new Car("Sedan", "Mercedes", 2010, "Red",
                 2.0f, 140, 100000));
         carRepository.save(new Car("Combi", "Mercedes", 2012, "Green",

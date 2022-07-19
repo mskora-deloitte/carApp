@@ -1,7 +1,7 @@
-package com.dolittle.carApp.car;
+package com.dolittle.carApp.model;
 
-import com.dolittle.carApp.employee.Employee;
-import com.dolittle.carApp.rental.Rental;
+import com.dolittle.carApp.model.Employee;
+import com.dolittle.carApp.model.Rental;
 
 import javax.persistence.*;
 import java.util.HashSet;

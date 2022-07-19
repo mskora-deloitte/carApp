@@ -1,6 +1,6 @@
-package com.dolittle.carApp.repository;
+package com.dolittle.carApp.dao;
 
-import com.dolittle.carApp.outpost.Outpost;
+import com.dolittle.carApp.model.Outpost;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OutpostRepository extends JpaRepository<Outpost, Long> {

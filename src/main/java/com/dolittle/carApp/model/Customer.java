@@ -1,6 +1,6 @@
-package com.dolittle.carApp.customer;
+package com.dolittle.carApp.model;
 
-import com.dolittle.carApp.rental.Rental;
+import com.dolittle.carApp.model.Rental;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -20,6 +20,9 @@ public class Customer {
     private String surname;
     @OneToMany
     private Set<Rental> rentals;
+
+    public Customer() {
+    }
 
     public Customer(String address, LocalDate birthDate, String phoneNumber, String creditCardNumber,
                     String name, String surname) {

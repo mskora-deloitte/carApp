@@ -1,8 +1,4 @@
-package com.dolittle.carApp.rental;
-
-import com.dolittle.carApp.car.Car;
-import com.dolittle.carApp.outpost.Outpost;
-import com.dolittle.carApp.customer.Customer;
+package com.dolittle.carApp.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -24,6 +20,9 @@ public class Rental {
     private Car car;
     @ManyToOne
     private Customer customer;
+
+    public Rental() {
+    }
 
     public Rental(LocalDate rentalDate, BigDecimal price, Outpost rentOutpost, Outpost returnOutpost,
                   Car car, Customer customer) {
