@@ -1,10 +1,7 @@
 package com.dolittle.carApp.controller;
 
-import com.dolittle.carApp.dao.CarRepository;
 import com.dolittle.carApp.model.Car;
 import com.dolittle.carApp.service.CarService;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

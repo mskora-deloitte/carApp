@@ -29,6 +29,7 @@ public class CarService {
         Optional<Car> optionalCar = carRepository.findById(patchedCar.getId());
         if (optionalCar.isPresent()) {
             Car car = optionalCar.get();
+            car.setId(patchedCar.getId());
             if (patchedCar.getType() != null) {
                 car.setType(patchedCar.getType());
             }
@@ -56,6 +57,7 @@ public class CarService {
             if (patchedCar.getMaintainers() != null) {
                 car.setMaintainers(patchedCar.getMaintainers());
             }
+            carRepository.save(car);
             return true;
         }
         return false;

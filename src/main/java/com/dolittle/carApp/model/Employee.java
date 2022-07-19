@@ -11,6 +11,7 @@ public class Employee {
         MANAGER,
         ACCOUNTANT
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -18,7 +19,7 @@ public class Employee {
     private Position position;
     private String name;
     private String surname;
-//    private Long outpostId;
+    //    private Long outpostId;
     @ManyToOne
     private Outpost outpost;
     @ManyToMany

@@ -1,7 +1,5 @@
 package com.dolittle.carApp.model;
 
-import com.dolittle.carApp.model.Rental;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
