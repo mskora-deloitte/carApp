@@ -1,7 +1,9 @@
 package com.dolittle.carApp.service;
 
 import com.dolittle.carApp.dao.CarRepository;
+import com.dolittle.carApp.dao.EmployeeRepository;
 import com.dolittle.carApp.model.Car;
+import com.dolittle.carApp.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ public class CarService {
 
     @Autowired
     private CarRepository carRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     public Car addCar(Car car) {
         return carRepository.save(car);
@@ -58,6 +62,21 @@ public class CarService {
                 car.setMaintainers(patchedCar.getMaintainers());
             }
             carRepository.save(car);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addCarMaintainer(Long carId, Long employeeId) {
+        Optional<Car> optionalCar = carRepository.findById(carId);
+        Optional<Employee> optionalEmployee = employeeRepository.findById(employeeId);
+        if (optionalCar.isPresent() && optionalEmployee.isPresent()) {
+            Car car = optionalCar.get();
+            Employee employee = optionalEmployee.get();
+            car.addMaintainer(employee);
+            employee.addCarToMaintain(car);
+            carRepository.save(car);
+            employeeRepository.save(employee);
             return true;
         }
         return false;

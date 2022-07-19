@@ -1,12 +1,16 @@
 package com.dolittle.carApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Employee {
 
-    enum Position {
+    public enum Position {
         SALESMAN,
         MANAGER,
         ACCOUNTANT
@@ -26,6 +30,19 @@ public class Employee {
     private Set<Car> carsToMaintain;
 
     public Employee() {
+    }
+
+    public Employee(Position position, String name, String surname) {
+        this.position = position;
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public Employee(Position position, String name, String surname, Outpost outpost) {
+        this.position = position;
+        this.name = name;
+        this.surname = surname;
+        this.outpost = outpost;
     }
 
     public Employee(Position position, String name, String surname, Outpost outpost, Set<Car> carsToMaintain) {

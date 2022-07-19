@@ -1,7 +1,9 @@
 package com.dolittle.carApp.controller;
 
-import com.dolittle.carApp.model.Car;
 import com.dolittle.carApp.dao.*;
+import com.dolittle.carApp.model.Car;
+import com.dolittle.carApp.model.Employee;
+import com.dolittle.carApp.model.Outpost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +37,12 @@ public class DatabaseController {
                 2.0f, 140, 100000));
         carRepository.save(new Car("Combi", "Mercedes", 2012, "Green",
                 2.0f, 120, 90000));
+        Outpost outpostWro = outpostRepository.save(new Outpost("000111222", "Wroclaw"));
+        Employee employee = employeeRepository.save(new Employee(Employee.Position.SALESMAN, "Adam", "Nowak"));
+        outpostWro.addEmployee(employee);
+        employee.setOutpost(outpostWro);
+        outpostRepository.save(outpostWro);
+        employeeRepository.save(employee);
     }
 
     @GetMapping("/database")
