@@ -41,18 +41,9 @@ public class OutpostService {
             return false;
         }
         Outpost outpost = outpostRepository.getReferenceById(patchedOutpost.getId());
-//        if (patchedOutpost.getEmployees() != null) {
-//            outpost.setEmployees(patchedOutpost.getEmployees());
-//        }
         if (patchedOutpost.getAddress() != null) {
             outpost.setAddress(patchedOutpost.getAddress());
         }
-//        if (patchedOutpost.getRentals() != null) {
-//            outpost.setRentals(patchedOutpost.getRentals());
-//        }
-//        if (patchedOutpost.getReturns() != null) {
-//            outpost.setReturns(patchedOutpost.getReturns());
-//        }
         if (patchedOutpost.getPhoneNumber() != null) {
             outpost.setPhoneNumber(patchedOutpost.getPhoneNumber());
         }
@@ -66,9 +57,7 @@ public class OutpostService {
         }
         Outpost outpost = outpostRepository.getReferenceById(outpostId);
         Employee employee = employeeRepository.getReferenceById(employeeId);
-//        outpost.addEmployee(employee);
         employee.setOutpost(outpost);
-//        outpostRepository.save(outpost);
         employeeRepository.save(employee);
         return true;
     }
@@ -77,7 +66,6 @@ public class OutpostService {
         if (!outpostRepository.existsById(outpostId)) {
             return null;
         }
-//        return outpostRepository.getReferenceById(outpostId).getEmployees();
         return employeeRepository.findAll().stream()
                 .filter(employee -> employee.getOutpost().getId().equals(outpostId))
                 .collect(Collectors.toSet());
@@ -87,9 +75,6 @@ public class OutpostService {
         if (!outpostRepository.existsById(outpostId) || !carRepository.existsById(carId)) {
             return null;
         }
-//        return outpostRepository.getReferenceById(outpostId).getEmployees().stream()
-//                .filter(employee -> employee.getCarsToMaintain().contains(carRepository.getReferenceById(carId)))
-//                .collect(Collectors.toSet());
         return employeeRepository.findAll().stream()
                 .filter(employee -> employee.getOutpost().getId().equals(outpostId))
                 .filter(employee -> employee.getCarsToMaintain().contains(carRepository.getReferenceById(carId)))

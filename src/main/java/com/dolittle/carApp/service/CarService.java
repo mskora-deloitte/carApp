@@ -2,6 +2,7 @@ package com.dolittle.carApp.service;
 
 import com.dolittle.carApp.dao.CarRepository;
 import com.dolittle.carApp.dao.EmployeeRepository;
+import com.dolittle.carApp.dao.RentalRepository;
 import com.dolittle.carApp.model.Car;
 import com.dolittle.carApp.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class CarService {
@@ -18,6 +20,8 @@ public class CarService {
     private CarRepository carRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private RentalRepository rentalRepository;
 
     public Car addCar(Car car) {
         return carRepository.save(car);
@@ -27,6 +31,9 @@ public class CarService {
         if (!carRepository.existsById(id)) {
             return false;
         }
+        rentalRepository.deleteAllInBatch(rentalRepository.findAll().stream()
+                .filter(rental -> rental.getCar().getId().equals(id))
+                .collect(Collectors.toSet()));
         carRepository.deleteById(id);
         return true;
     }
@@ -57,9 +64,6 @@ public class CarService {
             if (patchedCar.getMileage() != null) {
                 car.setMileage(patchedCar.getMileage());
             }
-//            if (patchedCar.getRentals() != null) {
-//                car.setRentals(patchedCar.getRentals());
-//            }
             if (patchedCar.getMaintainers() != null) {
                 car.setMaintainers(patchedCar.getMaintainers());
             }
