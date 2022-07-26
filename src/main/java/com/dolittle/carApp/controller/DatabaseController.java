@@ -39,7 +39,7 @@ public class DatabaseController {
                 2.0f, 120, 90000));
         Outpost outpostWro = outpostRepository.save(new Outpost("000111222", "Wroclaw"));
         Employee employee = employeeRepository.save(new Employee(Employee.Position.SALESMAN, "Adam", "Nowak"));
-        outpostWro.addEmployee(employee);
+//        outpostWro.addEmployee(employee);
         employee.setOutpost(outpostWro);
         outpostRepository.save(outpostWro);
         employeeRepository.save(employee);

@@ -37,13 +37,11 @@ public class OutpostController {
                 "Something went wrong";
     }
 
-    //TODO check if it works
     @GetMapping("/outposts/{id}/employees")
     public Set<Employee> getOutpostEmployees(@PathVariable Long id) {
         return outpostService.getOutpostEmployees(id);
     }
 
-    //TODO check if it works
     @GetMapping("/outposts/{outpostId}/maintainers")
     public Set<Employee> getOutpostCarMaintainers(@PathVariable Long outpostId, @RequestParam Long carId) {
         return outpostService.getOutpostCarMaintainers(outpostId, carId);

@@ -57,9 +57,9 @@ public class CarService {
             if (patchedCar.getMileage() != null) {
                 car.setMileage(patchedCar.getMileage());
             }
-            if (patchedCar.getRentals() != null) {
-                car.setRentals(patchedCar.getRentals());
-            }
+//            if (patchedCar.getRentals() != null) {
+//                car.setRentals(patchedCar.getRentals());
+//            }
             if (patchedCar.getMaintainers() != null) {
                 car.setMaintainers(patchedCar.getMaintainers());
             }

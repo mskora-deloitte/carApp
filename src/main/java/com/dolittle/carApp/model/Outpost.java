@@ -4,11 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -20,12 +19,12 @@ public class Outpost {
     private Long id;
     private String phoneNumber;
     private String address;
-    @OneToMany
-    private Set<Employee> employees = new HashSet<>();
-    @OneToMany
-    private List<Rental> rentals = new ArrayList<>();
-    @OneToMany
-    private List<Rental> returns = new ArrayList<>();
+//    @OneToMany
+//    private Set<Employee> employees = new HashSet<>();
+//    @OneToMany
+//    private List<Rental> rentals = new ArrayList<>();
+//    @OneToMany
+//    private List<Rental> returns = new ArrayList<>();
 
     public Outpost() {
     }
@@ -59,51 +58,51 @@ public class Outpost {
         this.address = address;
     }
 
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
+//    public Set<Employee> getEmployees() {
+//        return employees;
+//    }
+//
+//    public void setEmployees(Set<Employee> employees) {
+//        this.employees = employees;
+//    }
+//
+//    public void addEmployees(Set<Employee> employees) {
+//        this.employees.addAll(employees);
+//    }
+//
+//    public void addEmployee(Employee employee) {
+//        this.employees.add(employee);
+//    }
 
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
-    }
-
-    public void addEmployees(Set<Employee> employees) {
-        this.employees.addAll(employees);
-    }
-
-    public void addEmployee(Employee employee) {
-        this.employees.add(employee);
-    }
-
-    public List<Rental> getRentals() {
-        return rentals;
-    }
-
-    public void setRentals(List<Rental> rentals) {
-        this.rentals = rentals;
-    }
-
-    public void addRentals(List<Rental> rentals) {
-        this.rentals.addAll(rentals);
-    }
-
-    public void addRental(Rental rental) {
-        this.rentals.add(rental);
-    }
-
-    public List<Rental> getReturns() {
-        return returns;
-    }
-
-    public void setReturns(List<Rental> returns) {
-        this.returns = returns;
-    }
-
-    public void addReturns(List<Rental> returns) {
-        this.returns.addAll(returns);
-    }
-
-    public void addReturn(Rental returned) {
-        this.returns.add(returned);
-    }
+//    public List<Rental> getRentals() {
+//        return rentals;
+//    }
+//
+//    public void setRentals(List<Rental> rentals) {
+//        this.rentals = rentals;
+//    }
+//
+//    public void addRentals(List<Rental> rentals) {
+//        this.rentals.addAll(rentals);
+//    }
+//
+//    public void addRental(Rental rental) {
+//        this.rentals.add(rental);
+//    }
+//
+//    public List<Rental> getReturns() {
+//        return returns;
+//    }
+//
+//    public void setReturns(List<Rental> returns) {
+//        this.returns = returns;
+//    }
+//
+//    public void addReturns(List<Rental> returns) {
+//        this.returns.addAll(returns);
+//    }
+//
+//    public void addReturn(Rental returned) {
+//        this.returns.add(returned);
+//    }
 }
