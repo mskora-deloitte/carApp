@@ -1,6 +1,7 @@
 package com.dolittle.carApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Car {
 
     @Id
@@ -21,8 +23,8 @@ public class Car {
     private Float engineCapacity;
     private Integer power;
     private Integer mileage;
-    @OneToMany
-    private Set<Rental> rentals = new HashSet<>();
+//    @OneToMany
+//    private Set<Rental> rentals = new HashSet<>();
     @ManyToMany
     private Set<Employee> maintainers = new HashSet<>();
 
@@ -105,21 +107,21 @@ public class Car {
         this.mileage = mileage;
     }
 
-    public Set<Rental> getRentals() {
-        return rentals;
-    }
-
-    public void setRentals(Set<Rental> rentals) {
-        this.rentals = rentals;
-    }
-
-    public void addRentals(Set<Rental> rentals) {
-        this.rentals.addAll(rentals);
-    }
-
-    public void addRentals(Rental rental) {
-        this.rentals.add(rental);
-    }
+//    public Set<Rental> getRentals() {
+//        return rentals;
+//    }
+//
+//    public void setRentals(Set<Rental> rentals) {
+//        this.rentals = rentals;
+//    }
+//
+//    public void addRentals(Set<Rental> rentals) {
+//        this.rentals.addAll(rentals);
+//    }
+//
+//    public void addRentals(Rental rental) {
+//        this.rentals.add(rental);
+//    }
 
     public Set<Employee> getMaintainers() {
         return maintainers;

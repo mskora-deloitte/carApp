@@ -1,8 +1,10 @@
 package com.dolittle.carApp.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 public class Customer {
@@ -16,8 +18,8 @@ public class Customer {
     private String creditCardNumber;
     private String name;
     private String surname;
-    @OneToMany
-    private Set<Rental> rentals;
+//    @OneToMany
+//    private Set<Rental> rentals;
 
     public Customer() {
     }
@@ -88,19 +90,19 @@ public class Customer {
         this.surname = surname;
     }
 
-    public Set<Rental> getRentals() {
-        return rentals;
-    }
-
-    public void setRentals(Set<Rental> rentals) {
-        this.rentals = rentals;
-    }
-
-    public void addRentals(Set<Rental> rentals) {
-        this.rentals.addAll(rentals);
-    }
-
-    public void addRentals(Rental rental) {
-        this.rentals.add(rental);
-    }
+//    public Set<Rental> getRentals() {
+//        return rentals;
+//    }
+//
+//    public void setRentals(Set<Rental> rentals) {
+//        this.rentals = rentals;
+//    }
+//
+//    public void addRentals(Set<Rental> rentals) {
+//        this.rentals.addAll(rentals);
+//    }
+//
+//    public void addRentals(Rental rental) {
+//        this.rentals.add(rental);
+//    }
 }
